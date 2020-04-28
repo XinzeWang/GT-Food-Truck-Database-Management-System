@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Order</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+
+<body>
+<h1 class="ui center aligned header">Order</h1>
+
+<div class="ui placeholder segment">
+
+    <form class="ui form" th:action="@{/customer/placeorder(userName=${userName})}" method="post">
+
+        <div class="two fields">
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Food Truck:</label>
+                <td><input type="text" readonly="readonly" name="foodTruckName"
+                           th:value="${foodTruckName}"/></td>
+            </div>
+        </div>
+        <label>&nbsp;</label>
+        <div id="table-container" style="width:800px; margin:0 auto;">
+            <table class="ui compact teal table">
+                <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Price</th>
+                    <th>Purchase Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--td th:text-->
+                <tr th:each="foodTruckMenuQuery : ${foodTruckMenuQueryList}">
+                    <td><input type="text" readonly="readonly" name="foodNames"
+                               th:value="${foodTruckMenuQuery.foodName}"/></td>
+                    <!--                    <td th:text="${foodTruckMenuQuery.foodName}" th:value="${foodTruckMenuQuery.foodTruckName}">-->
+                    <!--                        stationName-->
+                    <!--                    </td>-->
+                    <td th:text="${foodTruckMenuQuery.price}" th:value="${foodTruckMenuQuery.price}">managerName</td>
+                    <th><input type="number" name="purchaseQuantities" min="1" max="10"/></th>
+                </tr>
+                </tbody>
+            </table>
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Date</label>
+                <i class="calendar alternate outline icon"></i>
+                <input type="date" name="date" placeholder="Date">
+            </div>
+            <br>
+            <button class="ui large fluid primary button" type="submit">Order</button>
+            <br>
+        </div>
+    </form>
+<a class="ui large fluid primary button" type="Back" href="#" th:href="@{/customer/home(userName=${userName})}">Back</a>
+</div>
+
+
+
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.checkbox')
+        .checkbox()
+    ;
+</script>
+</body>
+</html>

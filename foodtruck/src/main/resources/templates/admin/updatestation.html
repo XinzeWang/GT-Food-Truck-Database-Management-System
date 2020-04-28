@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Update Station</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header">Update Station</h1>
+
+<div class="ui placeholder segment">
+  <form  method="post" action="#" th:action="@{/admin/saveupdatedstation}" class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" th:value="${stationName}" name="stationName" placeholder="Station Name">
+      </div>
+    </div>
+    <div class=" two fields">
+      <div class="field">
+        <label>Capacity</label>
+        <input type="text" name="capacity" th:value="${capacity}" placeholder="Capacity Number">
+      </div>
+      <div class="field">
+        <label>Sponsored Building</label>
+        <select class="ui fluid search dropdown" name="buildingName">
+          <option th:each="building : ${available}" th:text="${building.buildingName}"></option>
+        </select>
+      </div>
+      <div class="inline">
+        <a class="ui blue button" type="back" href="#" th:href="@{/admin/home}">Back</a>
+        <button class="ui blue button" type="submit">Update</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+  $('.ui.form').form({
+    fields : {
+      name : {
+        identifier: 'stationName',
+        rules: [{
+          type : 'empty',
+          prompt: 'Please input stationname'
+        }]
+      },
+      Capacity : {
+        identifier: 'Capacity',
+        rules: [{
+          type : 'empty',
+          prompt: 'Please input Capacity'
+        }]
+      },
+    }
+  }
+  });
+
+</script>
+</body>
+</html>

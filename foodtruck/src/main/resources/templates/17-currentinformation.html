@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Current Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header">Current Information</h1>
+
+<div class="ui placeholder segment">
+    <div class="two fields">
+        <div class="field">
+            <label>Station:</label>
+        </div>
+        <div class="field">
+            <p th:text="${cusInfoBasic.stationName}"></p>
+            <p style="text-decoration: underline;"></p>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Building:</label>
+        </div>
+        <div class="field">
+            <p th:text="${cusInfoBasic.stationName}"></p>
+            <p style="text-decoration: underline;"></p>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Building Tag(s):</label>
+        </div>
+        <div class="field">
+            <p th:text="${cusInfoBasic.tags}"></p>
+            <p style="text-decoration: underline;"></p>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Building Description:</label>
+        </div>
+        <div class="field">
+            <p th:text="${cusInfoBasic.description}"></p>
+            <p style="text-decoration: underline;"></p>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Balance:</label>
+        </div>
+        <div class="field">
+            <p th:text="${cusInfoBasic.balance}"></p>
+            <p style="text-decoration: underline;"></p>
+        </div>
+    </div>
+
+<div id="table-container" style="width:800px; margin:0 auto;">
+        <form class="ui form" th:action="@{/customer/order(userName=${userName})}" method="post">
+<!--    <form class="ui form" th:href="@{'/customer/' + ${userName} + '/order'(userName = ${foodInfo.foodNames}, foodTruckName = ${foodInfo.foodTruckName},-->
+<!--    managerName = ${foodInfo.managerName}, foodNames = ${foodInfo.foodNames})}" method="post">-->
+        <table class="ui compact teal table">
+            <thead>
+            <tr>
+                <th>Selection</th>
+                <th>Food Truck Name</th>
+                <th>Manager</th>
+                <th>Food(s)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--td th:text-->
+            <tr th:each="foodInfo : ${cusInfoFT}">
+                <td>
+                    <input type="radio" name="foodTruckName" checked="" tabindex="0" class="hidden" th:value="${foodInfo.foodTruckName}">
+                    <label></label>
+                </td>
+                <td th:text="${foodInfo.foodTruckName}" th:value="${foodInfo.foodTruckName}">stationName</td>
+                <td th:text="${foodInfo.managerName}" th:value="${foodInfo.managerName}">managerName</td>
+                <td th:text="${foodInfo.foodNames}" th:value="${foodInfo.foodNames}">foodNames</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <button class="ui large fluid submit primary button" type="submit">Order</button>
+        <br>
+    </form>
+</div>
+<div class="field" style="width:800px; margin:0 auto;">
+<a class="ui large fluid submit primary button" type="Back" href="#" th:href="@{/customer/home(userName=${userName})}">Back</a>
+</div>
+</div>
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+
+    $('.ui.checkbox')
+        .checkbox()
+    ;
+
+</script>
+</body>
+</html>

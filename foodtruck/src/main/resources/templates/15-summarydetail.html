@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Summary Detail</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <h1 class="ui center aligned header" >Summary Detail</h1>
+
+  <div class="ui placeholder segment">
+
+        <div class="two fields">
+        <div class="field" style="width:800px; margin:0 auto;">
+          <label>Food Truck Name:</label>
+        </div>
+          <!--link to food truck summery view detial-->
+        <div class="field" style="width:800px; margin:0 auto;">
+          <p th:text="${foodTruckName}"></p>
+        </div>
+      </div>
+        <label>&nbsp;</label>
+        <div id="table-container" style="width:800px; margin:0 auto;">
+          <!--th:fragment=list of the filter results-->
+          <table class="ui compact teal table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Total Pruchase</th>
+                <th># Orders</th>
+                <th>Food(s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="summary : ${summaryDetailList}">
+
+                <td th:text="${summary.date}" />
+                <td th:text="${summary.customerName}" />
+                <td th:text="${summary.totalPurchase}" />
+                <td th:text="${summary.orderCount}" />
+                <td th:text="${summary.foodNames}" />
+
+              </tr>
+            </tbody>
+          </table>
+      </div>
+
+<br><br>
+  <div class="field" style="width:800px; margin:0 auto;">
+    <a class="ui blue button" type="Back" href="#" th:href="@{/manager/home(userName=${userName})}">Back</a>
+  </div>
+</div>
+
+
+
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+</body>
+</html>

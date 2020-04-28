@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Create Food</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header">Create Food</h1>
+
+<div class="ui placeholder segment">
+  <form method="post" action="#" th:action="@{/admin/savefood}" class="ui form">
+    <div class="field">
+      <label>Name</label>
+      <input type="text" name="foodName" placeholder="Food Name">
+    </div>
+
+    <br>&nbsp;</br>
+
+    <div class="inline">
+      <a class="ui blue button" type="Back" href="#" th:href="@{managefood}">Back</a>
+      <button class="ui blue button" type="submit">Create</button>
+    </div>
+  </form>
+
+</div>
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+  $('.ui.form').form({
+    fields : {
+      name : {
+        identifier: 'foodName',
+        rules: [{
+          type : 'empty',
+          prompt: 'Please input foodname'
+        }]
+      },
+    }
+  });
+
+</script>
+</body>
+</html>

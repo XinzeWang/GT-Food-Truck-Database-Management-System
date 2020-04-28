@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Manage Food Truck</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <h1 class="ui center aligned header" >Manage Food Truck</h1>
+
+  <div class="ui placeholder segment">
+      <form class="ui form" method="get" action="#" th:action="@{/manager/filterfoodtruck}">
+        <div class="two fields">
+          <div class="field" style="width:800px; margin:0 auto;">
+            <label>Food Truck Name(contain)</label>
+              <input type="text" name="foodTruckName" placeholder="Food Truck Name">
+          </div>
+          <div class="field" style="width:800px; margin:0 auto;">
+            <label>Station Name</label>
+            <select class="ui fluid search dropdown" name="stationName">
+              <option value="">Please select a station</option>
+              <option th:each="station : ${stations}" th:text="${station.stationName}"></option>
+            </select>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field" style="width:800px; margin:0 auto;">
+            <label>Staff Count</label>
+              <input type="number" name="minStaffCount">-
+              <input type="number" name="maxStaffCount">
+          </div>
+
+          <div class="field" style="width:800px; margin:0 auto;">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" name="hasRemainingCapacity">
+                <label>Has Remaning Capacity</label>
+            </div>
+          </div>
+          </div>
+          <div class="field">
+            <button class="ui blue button" type="submit">Filter</button>
+          </div>
+
+      </form>
+      <label>&nbsp;</label>
+        <div id="table-container" style="width:800px; margin:0 auto;">
+          <table class="ui compact teal table">
+            <thead>
+              <tr>
+                <th>Food Truck Name</th>
+                <th>Station Name</th>
+                <th>Remaining Capacity</th>
+                <th>Staff</th>
+                <th>#Menu Item</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="tempTruck : ${trucks}">
+
+                <td th:text="${tempTruck.foodTruckName}" />
+                <td th:text="${tempTruck.stationName}" />
+                <td th:text="${tempTruck.remainingCapacity}" />
+                <td th:text="${tempTruck.staffCount}" />
+                <td th:text="${tempTruck.menuItem}" />
+                <!--update button-->
+                <td>
+                  <a class="ui blue button" href="#"
+                     th:href="@{/manager/truckupdate(foodTruckName=${tempTruck.foodTruckName},
+                     stationName=${tempTruck.stationName})}">Update Truck</a>
+                </td>
+                <!--delete button-->
+                <td>
+                  <a class="ui blue button" href="#"
+                     th:href="@{/manager/deletefoodtruck(foodTruckName=${tempTruck.foodTruckName})}"
+                     onclick="if (!(confirm('Are you sure you want to delete this truck?'))) return false">Delete Truck
+                  </a>
+                </td>
+              </tr>
+          </table>
+      </div>
+
+
+<label>&nbsp;</label>
+<div class="inline">
+<a class="ui blue button" type="Back" href="#" th:href="@{/manager/home(userName=${userName})}">Back</a>
+<a class="ui blue button" href="#" th:href="@{/manager/createtruck}">Create</a>
+</div>
+</div>
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.form').form({
+        fields : {
+            stationname : {
+
+            },
+            staffcount : {
+                identifier: 'minstaff',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please choose min staffcount'
+                }]
+            },
+            to : {
+                identifier: 'maxstaff',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please choose max staffcount'
+                }]
+            },
+            terms : {
+                identifier: 'terms',
+                rules: [{
+                    type : 'checked',
+                    prompt: 'It is not necessary to agree'
+                }]
+            },
+      }
+    });
+    $('.ui.checkbox')
+  .checkbox()
+;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Register</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <h1 class="ui center aligned header">Register</h1>
+
+  <div class="ui placeholder segment">
+    <form class="ui form" name="myForm" action="#" th:action="@{/registration}" onsubmit="return validateForm()" method="post">
+
+      <div class="require field">
+        <label>Username</label>
+        <i class="user circle icon"></i>
+        <input type="text" name="username" placeholder="username">
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="eamil">
+      </div>
+
+      <div class="require field">
+        <label>First Name</label>
+        <input type="text" name="firstname" placeholder="firstname">
+      </div>
+
+      <div class="require field">
+        <label>Last Name</label>
+        <input type="text" name="lastname" placeholder="lastname">
+      </div>
+
+      <div class="require field">
+        <label>Password</label>
+        <i class="lock icon"></i>
+        <input type="password" name="password" placeholder="password">
+      </div>
+
+      <div class="require field">
+        <label>Confirm Password</label>
+        <i class="lock icon"></i>
+        <input type="password" name="confirmpassword" placeholder="confirmpassword">
+      </div>
+
+      <div class="field">
+        <label>Balance</label>
+        <input type="number" name="balance" placeholder="balance">
+      </div>
+
+      <div class="field">
+        <label>Role</label>
+        <select class="ui fluid search dropdown" name="role">
+          <option value="">Please select a role</option>
+          <option value="Admin">Admin</option>
+          <option value="Manager">Manager</option>
+          <option value="Staff">Staff</option>
+        </select>
+      </div>
+
+      <button class="ui blue submit button">register</button>
+
+    </form>
+
+
+
+<!--    -->
+<!--    <form class="ui form" action="#" th:action="@{/registration}">-->
+<!--        <div class="two fields">-->
+<!--            <div class="required field">-->
+<!--                <label>Username</label>-->
+<!--                    <input type="text" name="username" placeholder="Username">-->
+<!--            </div>-->
+<!--            <div class="field" value="">-->
+<!--                <label>Email</label>-->
+<!--                    <input type="text" name="email" placeholder="Email">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="two fields">-->
+<!--          <div class="required field">-->
+<!--            <label>First Name</label>-->
+<!--            <input type="text" name="firstname" placeholder="First Name">-->
+<!--          </div>-->
+<!--          <div class="required field">-->
+<!--            <label>Last Name</label>-->
+<!--            <input type="text" name="lastname" placeholder="Last Name">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="two fields">-->
+<!--          <div class="required field">-->
+<!--            <label>Password</label>-->
+<!--            <input type="password" name="password" placeholder="Password">-->
+<!--          </div>-->
+<!--          <div class="required field">-->
+<!--            <label>Confirm Password</label>-->
+<!--            <input type="password" name="confirmpassword" placeholder="Confirm Password">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="two fields">-->
+<!--          <div class="field">-->
+<!--            <label>Balance</label>-->
+<!--&lt;!&ndash;            <input type="text" name="balance" placeholder="balance">&ndash;&gt;-->
+<!--            <input type="text" name="balance" placeholder="balance"/>-->
+<!--          </div>-->
+<!--          <div class="required field">-->
+<!--            <div class="inline field">-->
+<!--              <div class="field">-->
+<!--                <div class="ui radio checkbox">-->
+<!--                  <input type="radio" name="role" checked="" tabindex="0" class="hidden">-->
+<!--                  <label>Admin</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="field">-->
+<!--                <div class="ui radio checkbox">-->
+<!--                  <input type="radio" name="role" checked="" tabindex="0" class="hidden">-->
+<!--                  <label>Manger</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="field">-->
+<!--                <div class="ui radio checkbox">-->
+<!--                  <input type="radio" name="role" checked="" tabindex="0" class="hidden">-->
+<!--                  <label>Staff</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <button class="ui blue submit button">Register</button>-->
+<!--</form>-->
+
+<label>&nbsp;</label>
+<div class="inline">
+<a class="ui blue button" href="/login">Back</a>
+
+</div>
+</div>
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.form').form({
+        fields : {
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input username'
+                }]
+            },
+            email : {
+                identifier: 'email',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input email'
+                }]
+            },
+            firstname : {
+                identifier: 'firstname',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input firstname'
+                }]
+            },
+            lastname : {
+                identifier: 'lastname',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input lastname'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input password'
+                }]
+            },
+            confirmpassword : {
+                identifier: 'confirmpassword',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt: 'Please input confirmpassword'
+                    }]
+            },
+            balance : {
+                identifier: 'balance',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt: 'Please input balance'
+                    }]
+            },
+        }
+    });
+    $('.ui.radio.checkbox')
+      .checkbox()
+    ;
+
+    function validateForm() {
+      var x = document.forms["myForm"]["balance"].value;
+      if (x == "") {
+        alert("Staff");
+        return true;
+</script>
+
+</body>
+</html>

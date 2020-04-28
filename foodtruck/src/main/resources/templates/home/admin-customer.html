@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header">Admin-Customer Home</h1>
+
+<div class="ui placeholder segment">
+    <form class="ui form">
+            <br><a class="ui blue button" href="#" th:href="@{/customer/explore(userName=${userName})}">
+                Explore
+            </a></br>
+          <br><a class="ui blue button" href="#" th:href="@{/customer/orderHistory(userName=${userName})}">
+                View Order History
+            </a></br>
+            <br><a class="ui blue button" href="#" th:href="@{/customer/information_basic(userName=${userName})}">
+                View Current Information
+            </a></br>
+            <br><a class="ui blue button" href="#" th:href="@{admin/manageBS}">
+                Manage Building & Station
+            </a></br>
+            <br><a class="ui blue button" href="#" th:href="@{admin/managefood}">
+                Manager Food
+            </a></br>
+    </form>
+</div>
+
+
+<footer></footer>
+
+
+</body>
+</html>

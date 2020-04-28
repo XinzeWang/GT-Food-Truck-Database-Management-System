@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Manage Food Truck Summary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header" >Food Truck Summary</h1>
+
+<div class="ui placeholder segment">
+    <form action="#" method="GET" th:action="@{/manager/filterfoodtrucksummary}" class="ui form">
+        <div class="two fields">
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Food Truck Name(contain)</label>
+                    <input type="text" name="foodTruckName" placeholder="Food Truck Name">
+            </div>
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Station Name</label>
+                <select class="ui fluid search dropdown" name="stationName">
+                    <option th:each="station : ${stations}" th:text="${station.stationName}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Date</label>
+                    <i class="calendar alternate outline icon"></i>
+                    <input type="date" name="minDate">-
+                    <i class="calendar alternate outline icon"></i>
+                    <input type="date" name="maxDate">
+            </div>
+        <div class="field" style="width:800px; margin:0 auto;">
+            <label>sortedBy</label>
+            <select class="ui fluid search dropdown" name="sortedBy">
+                <option value="foodTruckName">foodTruckName</option>
+                <option value="totalOrder">totalOrder</option>
+                <option value="totalRevenue">totalRevenue</option>
+                <option value="totalCustomer">totalCustomer</option>
+            </select>
+        </div>
+        <div class="field" style="width:800px; margin:0 auto;">
+            <label>sortDirection</label>
+            <select class="ui fluid search dropdown" name="sortedDirection">
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+            </select>
+        </div>
+        </div>
+        <div class="field" style="width:800px; margin:0 auto;">
+            <button class="ui blue button" type="submit">Filter</button>
+        </div>
+
+        <!--result-->
+        <label>&nbsp;</label>
+        <div id="table-container" style="width:800px; margin:0 auto;">
+            <table class="ui compact teal table">
+                <thead>
+                <tr>
+                    <th>Food Truck Name</th>
+                    <th># Total Order</th>
+                    <th>Total Revenue</th>
+                    <th># Customer</th>
+                    <th>View Detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--td th:text-->
+                <tr th:each="summary : ${summaryList}">
+                    <td th:text="${summary.foodTruckName}" />
+                    <td th:text="${summary.totalOrder}" />
+                    <td th:text="${summary.totalRevenue}" />
+                    <td th:text="${summary.totalCustomer}" />
+                    <td>
+                        <a class="ui blue button" 
+                           th:href="@{/manager/trucksummarydetail(foodTruckName=${summary.foodTruckName})}">View Detail
+                        </a>
+                    </td>
+
+                </tr>
+<!--                <tr>-->
+<!--                    <td th:text="">-->
+<!--                        <input type="radio" name="foodtruckname" checked="" tabindex="0" class="hidden">-->
+<!--                        <label>Food Truck One</label>-->
+<!--                    </td>-->
+<!--                    <td th:text="">30</td>-->
+<!--                    <td th:text="">1380</td>-->
+<!--                    <td th:text="">25</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td th:text="">-->
+<!--                        <input type="radio" name="foodtruckname" checked="" tabindex="0" class="hidden">-->
+<!--                        <label></label>-->
+<!--                    </td>-->
+<!--                    <td th:text=""></td>-->
+<!--                    <td th:text=""></td>-->
+<!--                    <td th:text=""></td>-->
+<!--                    <td th:text=""></td>-->
+<!--                </tr>-->
+                </tbody>
+            </table>
+        </div>
+
+    </form>
+
+
+    <label>&nbsp;</label>
+<!--    <div class="inline">-->
+    <a class="ui blue button" type="Back" href="#" th:href="@{/manager/home(userName=${userName})}">Back</a>
+
+<!--        <a class="ui blue button" type="viewdetail" href="./summarydetail.html">View Detail</a>-->
+
+<!--    </div>-->
+</div>
+
+
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.form').form({
+        fields : {
+            foodtruckname : {
+                identifier: 'foodTruckName',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input foodtruckname'
+                }]
+            },
+            stationname : {
+                identifier: 'stationName',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please choose stationname'
+                }]
+            },
+            date : {
+                identifier: 'mindate' "maxdate",
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please choose min mindate and maxdate'
+                }]
+            },
+
+        }
+    });
+    $('.ui.checkbox')
+        .checkbox()
+    ;
+</script>
+</body>
+</html>

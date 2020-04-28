@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Update Buidling</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header">Update Building</h1>
+
+<div class="ui placeholder segment">
+  <form method="post" action="#" class="ui form"
+        th:action="@{/admin/saveupdatedbuilding(oldBuildingName=${buildingName})}" >
+    <div class="ui equal width form">
+      <div class="field">
+        <label>Name</label>
+        <input th:value="${buildingName}" type="text" name="buildingName" placeholder="BuildingName">
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <input type="text" name="description" placeholder="Description">
+      </div>
+      <div class="field">
+        <label>Tags</label>
+        <input th:value="${tag}" type="text" name="tag1" placeholder="BuildingTag you want to add">
+      </div>
+      <div class="field">
+        <label>Tags</label>
+        <input type="text" name="tag2" placeholder="BuildingTag you want to add">
+      </div>
+    </div>
+
+    <div class="inline">
+      <a class="ui blue button" type="back" href="#" th:href="@{/admin/home}">Back</a>
+      <button class="ui blue button" type="submit">Update</button>
+    </div>
+  </form>
+  <label>&nbsp;</label>
+
+  <footer></footer>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+    $('.ui.form').form({
+      fields : {
+        name : {
+          identifier: 'buildingName',
+          rules: [{
+            type : 'empty',
+            prompt: 'Please input buildingname'
+          }]
+        },
+        description : {
+          identifier: 'description',
+          rules: [{
+            type : 'empty',
+            prompt: 'Please input description'
+          }]
+        },
+        tags : {
+          identifier: 'tags',
+          rules: [{
+            type : 'empty',
+            prompt: 'tags'
+          }],
+        }
+      }
+    });
+    $('.example-default-value').each(function() {
+      var default_value = this.value;
+      $(this).focus(function() {
+        if(this.value == default_value) {
+          this.value = '';
+        }
+      });
+      $(this).blur(function() {
+        if(this.value == '') {
+          this.value = default_value;
+        }
+      });
+    });
+    function example_append() {
+      $('#example').append($('#example-textarea').val());
+    }
+  </script>
+</body>
+</html>

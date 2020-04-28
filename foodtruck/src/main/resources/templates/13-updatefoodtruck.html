@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Update Food Truck</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <h1 class="ui center aligned header" >Update Food Truck</h1>
+  <div class="ui placeholder segment">
+      <form class="ui form" method="post" action="#" th:action="@{/manager/truckupdate}">
+          <div class="field">
+          <lable>Name</label>
+            <input type="text" name="foodTruckName" th:value="${oldTruckName}" placeholder="Food Truck Name">
+        </div>
+        <div class="field">
+          <lable>Station</label>
+              <select class="ui fluid search dropdown" th:value="${oldStationName}" name="stationName">
+                  <option th:each="station : ${allstations}" th:text="${station.stationName}"></option>
+              </select>
+
+        </div>
+        <div class="field">
+          <lable>Assigned Staff</label>
+
+              <select class="ui fluid search dropdown" name="staffName">
+                  <option th:each="tempstaff : ${staff}" th:text="${tempstaff.userName}"></option>
+              </select>
+        </div>
+          <div class="three fields">
+              <!--Append/clear 功能-->
+              <div class="field" style="width:800px; margin:0 auto;">
+                  <label>Menu Item</label>
+              </div>
+
+              <!--Food 1-->
+              <div class="field" style="width:800px; margin:0 auto;">
+                  <label>Food</label>
+                  <select class="ui fluid search dropdown" name="foodName">
+                      <option th:each="fooditem : ${foods}" th:text="${fooditem.foodName}"></option>
+                  </select>
+              </div>
+              <div class="field" style="width:800px; margin:0 auto;">
+                  <label>Price</label>
+                  <input type="text" name="price" placeholder="Price">
+              </div>
+          </div>
+
+          <div>
+              <button type="submit" class="btn btn-success btn-sm mb-3">Update</button>
+          </div>
+
+
+
+          <footer></footer>
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+      <script>
+          $('.ui.form').form({
+              fields : {
+                  name : {
+                      identifier: 'foodTruckName',
+                      rules: [{
+                          type : 'empty',
+                          prompt: 'Please input foodtruckname'
+                      }]
+                  },
+                  station : {
+                      identifier: 'stationName',
+                      rules: [{
+                          type : 'empty',
+                          prompt: 'Please choose stationname'
+                      }]
+                  },
+                  assignedstaff : {
+                      identifier: 'staffname',
+                      rules: [{
+                          type : 'empty',
+                          prompt: 'Please choose staffname'
+                      }],
+              }
+            }
+          });
+          $('.example-default-value').each(function() {
+          var default_value = this.value;
+          $(this).focus(function() {
+              if(this.value == default_value) {
+                  this.value = '';
+              }
+          });
+          $(this).blur(function() {
+              if(this.value == '') {
+                  this.value = default_value;
+              }
+          });
+      });
+      function example_append() {
+          $('#example').append($('#example-textarea').val());
+      }
+</script>
+</body>
+  </html>

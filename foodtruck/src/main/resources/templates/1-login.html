@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+  <h1 class="ui center aligned header">GT Food Truck</h1>
+  <div class="ui placeholder segment">
+    <form class="ui form" method="post" action="#" th:action="@{/login}">
+
+      <div class="require field">
+        <label>Username</label>
+        <i class="user circle icon"></i>
+        <input type="text" name="username" placeholder="username">
+      </div>
+
+      <div class="require field">
+        <label>Password</label>
+        <i class="lock icon"></i>
+        <input type="password" name="password" placeholder="password">
+      </div>
+
+      <button class="ui blue submit button">Login</button>
+
+    </form>
+  <label class="ui center aligned"> ⭐️ Example Username and Password ⭐️ </label>
+    <label class="ui center aligned"> Admin&Customer: 4400_thebestclass, 4400440044 </label>
+    <label class="ui center aligned"> Manager: doe.jane, 22222222200 </label>
+    <label class="ui center aligned"> Customer: customer1, 1111111111 </label>
+    <label class="ui center aligned"> Admin: Nekonsh, 8888888888 </label>
+    <label class="ui center aligned"> Staff: Staff1, 3333333333 </label>
+
+
+    <div class="inline">
+
+
+  <a class="ui blue button" href="#" th:href="@{/registration}"> Register </a>
+</div>
+  </div>
+  <footer></footer>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+      $('.ui.form').form({
+          fields : {
+              username : {
+                  identifier: 'username',
+                  rules: [{
+                      type : 'empty',
+                      prompt: 'Please input username'
+                  }]
+              },
+              password : {
+                  identifier: 'password',
+                  rules: [{
+                      type : 'empty',
+                      prompt: 'Please input password'
+                  }]
+              }
+          }
+      });
+  </script>
+</body>
+</html>

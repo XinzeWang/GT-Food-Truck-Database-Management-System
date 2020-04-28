@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Order History</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+
+<h1 class="ui center aligned header">Order History</h1>
+
+<div class="ui placeholder segment">
+
+    <div id="table-container" style="width:800px; margin:0 auto;">
+        <!--th:fragment=list of the filter results-->
+        <table class="ui compact teal table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>OrderID</th>
+                <th>Order Total</th>
+                <th>Food(s)</th>
+                <th>Food Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--td th:text-->
+            <!--link to oder detail-->
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.date}"></td>
+                <td th:text="${order.orderID}"></td>
+                <td th:text="${order.orderTotal}"></td>
+                <td th:text="${order.foodNames}"></td>
+                <td th:text="${order.foodQuantity}"></td>
+            </tr>
+            </tbody>
+        </table>
+    <label>&nbsp;</label>
+    </div>
+    <a class="ui blue button" type="Back" href="#" th:href="@{/customer/home(userName=${userName})}">Back</a>
+    <!-- exmaple: href="#" th:href="@{/func/adminFunctionality}"-->
+
+</div>
+
+<footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+</body>
+</html>

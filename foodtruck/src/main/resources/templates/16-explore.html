@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Explore</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<h1 class="ui center aligned header">Explore</h1>
+
+<div class="ui placeholder segment">
+    <form class="ui form" href="#" th:action="@{/customer/explore(userName=${userName})}" method="post" >
+        <div class="two fields">
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Builidng Name</label>
+                <select class="ui fluid search dropdown" name="buildingName">
+                    <!-- 需要链接上 building 的 name-->
+                    <option></option>
+                    <option th:each="building : ${buildingList}" th:value="${building.buildingName}" th:text="${building.buildingName}"></option>
+                </select>
+            </div>
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Station Name</label>
+                <select class="ui fluid search dropdown" name="stationName">
+                    <!-- 需要链接上 station 的 name-->
+                    <option></option>
+                    <option th:each="station : ${stationList}" th:value="${station.stationName}" th:text="${station.stationName}"></option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Building Tag(contain)</label>
+                <input type="text" name="buildingTag" placeholder="Building Tag(contain)">
+            </div>
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Food Truck Name(contain) </label>
+                <input type="text" name="foodTruckName" placeholder="Food Truck Name(contain)">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field" style="width:800px; margin:0 auto;">
+                <label>Food(contain)</label>
+                <input type="text" name="foodName" placeholder="Food(contain)">
+            </div>
+        </div>
+        <label>&nbsp;</label>
+        <!--filter button need link-->
+        <button class="ui large fluid primary button" type="submit">Filter</button>
+        <label>&nbsp;</label>
+    </form>
+
+    <div id="table-container" style="width:1500px; margin:0 auto;">
+        <!--th:fragment=list of the filter results-->
+        <form class="ui form" th:action="@{/customer/select_location(userName=${userName})}" method="post" >
+            <table class="ui compact teal table">
+                <thead>
+                <tr>
+                    <th>Selection</th>
+                    <th>Station</th>
+                    <th>Building</th>
+                    <th>Food Truck(s)</th>
+                    <th>Food(s)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--td th:text-->
+                <tr th:each="query : ${Queries}">
+                    <td>
+                        <input type="radio" name="stationName" checked="" tabindex="0" class="hidden" th:value="${query.stationName}">
+                        <label></label>
+                    </td>
+                    <td th:text="${query.stationName}" th:value="${query.stationName}">stationName</td>
+                    <td th:text="${query.buildingName}" th:value="${query.buildingName}">buildingName</td>
+                    <td th:text="${query.foodTruckNames}" th:value="${query.foodTruckNames}">foodTruckNames</td>
+                    <td th:text="${query.foodNames}" th:value="${query.foodNames}">foodNames</td>
+                </tr>
+                </tbody>
+            </table>
+            <br><button class="ui large fluid submit primary button" type="submit">Select</button><br>
+        </form>
+    </div>
+    <a class="ui blue button" type="Back" href="#" th:href="@{/customer/home(userName=${userName})}">Back</a>
+
+
+
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script>
+        $('.ui.form').form({
+            fields: {
+                buidlingname: {
+                    identifier: 'buidlingname',
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please choose buidlingname'
+                    }]
+                },
+                stationname: {
+                    identifier: 'stationname',
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please choose min stationname'
+                    }]
+                },
+                buidlingtag: {
+                    identifier: 'buidlingtag',
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please eneter buidlingtag'
+                    }]
+                },
+                foodtruckname: {
+                    identifier: 'foodtruckname',
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enetr foodtruckname'
+                    }]
+                },
+                foodname: {
+                    identifier: 'foodname',
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enetr foodname'
+                    }]
+                },
+            }
+        });
+        $('.ui.radio.checkbox')
+            .checkbox()
+        ;
+    </script>
+</div>
+</body>
+</html>
