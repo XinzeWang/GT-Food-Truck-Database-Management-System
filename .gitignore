@@ -1,3 +1,5 @@
+.DS_Store
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -35,4 +37,4 @@ buildNumber.properties
 hs_err_pid*
 /.metadata/
 
-.DS_Store
+
