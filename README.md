@@ -7,7 +7,7 @@
 ![title_logo](https://github.com/XinzeWang/GT-Food-Truck/raw/master/readme-resource/logo.png)
 
 ## Online Demo
-This project has been deployed on AWS using Elastic Beanstalk and Amazon Aurora.
+This project has been deployed on **AWS** using ***Elastic Beanstalk*** and ***Amazon Aurora***.
 
 Demo Link: 👉👉 http://gtfoodtruck-env.eba-fvaym9bd.us-east-1.elasticbeanstalk.com/ 👈👈
 
