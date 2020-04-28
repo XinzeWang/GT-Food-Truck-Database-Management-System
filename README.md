@@ -16,6 +16,11 @@ This project aims to design and implement a food truck database management syste
 
 The design and structure of the database system originated from ***CS4400 "Database System", instructed by Mark Moss, from Georgia Institute of Technology.*** 
 
+## Technique Stacks
+* Database: MySQL
+* Backend: Spring Boot + Hibernate
+* Frontend: Thymeleaf, Semantic-UI
+
 ## Project Highlights
 ### Admin Manage Buildings and Stations
 <br><br>
@@ -28,10 +33,6 @@ The design and structure of the database system originated from ***CS4400 "Datab
 ### Order History
  ![image3](https://github.com/XinzeWang/GT-Food-Truck/raw/master/readme-resource/screen3.png)
 <br><br>
-## Technique Stacks
-* Database: MySQL
-* Backend: Spring Boot + Hibernate
-* Frontend: Thymeleaf, Semantic-UI
 
 ## Run The Application On Your Local System
 1.	Open the project file in IntelliJ or Eclipse
