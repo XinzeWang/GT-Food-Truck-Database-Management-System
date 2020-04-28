@@ -1,9 +1,14 @@
+![Language](https://img.shields.io/badge/Language-Java-red)
+![Framework](https://img.shields.io/badge/Framework-Spring-brightgreen)
+[![Licence](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](https://github.com/XinzeWang/GT-Food-Truck/raw/master/LICENSE) 
+
 # GT Food Truck Database Management System
 
 ![title_logo](https://github.com/XinzeWang/GT-Food-Truck/raw/master/readme-resource/logo.png)
 
 ## Online Demo
-This project has been deployed on AWS using Elastic Beanstalk and Amazon Aurora. 
+This project has been deployed on AWS using Elastic Beanstalk and Amazon Aurora.
+
 Demo Link: 👉👉 http://gtfoodtruck-env.eba-fvaym9bd.us-east-1.elasticbeanstalk.com/ 👈👈
 
 ## Description
@@ -12,12 +17,17 @@ This project aims to design and implement a food truck database management syste
 The design and structure of the database system originated from ***CS4400 "Database System", instructed by Mark Moss, from Georgia Institute of Technology.*** 
 
 ## Project Highlights
+### Admin Manage Buildings and Stations
+<br><br>
  ![image1](https://github.com/XinzeWang/GT-Food-Truck/raw/master/readme-resource/screen1.png)
- 
+ <br><br>
+### Customer Explore Food Truck 
+<br><br>
  ![image2](https://github.com/XinzeWang/GT-Food-Truck/raw/master/readme-resource/screen2.png)
- 
+<br><br>
+### Order History
  ![image3](https://github.com/XinzeWang/GT-Food-Truck/raw/master/readme-resource/screen3.png)
-
+<br><br>
 ## Technique Stacks
 * Database: MySQL
 * Backend: Spring Boot + Hibernate
